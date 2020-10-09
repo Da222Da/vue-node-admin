@@ -1,2 +1,3 @@
 # vue-node-admin
-开启模仿之路
+
+搭建后台管理系统：`vue2.0`、`node`
