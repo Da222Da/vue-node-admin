@@ -1,7 +1,7 @@
 /**
  * @file 假数据模拟用户表
  * @param id   课程id
- * @param pid 第几级路由，例如：“pid=0”，最高权限，一级路由
+ * @param pid 第几级路由，例如：“pid=0”，最高权限，第一层路由
  * @param path 路径
  * @param link 点击跳转的路由
  * @param name 对应着前端页面组件的name

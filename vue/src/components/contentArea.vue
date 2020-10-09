@@ -9,6 +9,6 @@
   width: 100%;
   height: 100%;
   padding: 90px 30px 30px 230px;
-  background-color: green;
+  // background-color: green;
 }
 </style>
