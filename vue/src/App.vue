@@ -7,17 +7,6 @@
 <script>
 export default {
   name: "App",
-  // 注册自定义指令
-  directives: {
-    // 声明自定义指令v-focus
-    focus: {
-      // 定义指令的钩子函数
-      inserted: function (el, binding) {
-        console.log(el, binding);
-        el.focus();
-      },
-    },
-  },
 };
 </script>
 

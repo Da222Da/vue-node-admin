@@ -6,7 +6,6 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: "/", component: index },
-    { path: "/tab", component: () => import("@/views/Tab.vue") },
 ];
 
 const router = new VueRouter({
