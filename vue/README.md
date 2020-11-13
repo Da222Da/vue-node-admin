@@ -1,19 +1,13 @@
-# vue-admin
+# vue2.0 项目文档
 
-## Project setup
-```
-npm install
-```
+# ##项目流程：
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+**1. 项目准备工作：**
 
-### Compiles and minifies for production
-```
-npm run build
-```
+-   vue-cli 初始化项目
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**2. 创建子分支 dev-login，完成登录功能：**
+
+> `git checkout -b dev-login` -> `git branch`
+>
+> `git commit -m '（小功能）创建登录文件夹和路由'`
