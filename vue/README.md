@@ -9,9 +9,14 @@
 -   vue-cli 初始化项目
 
 *   [按需引入 element-ui 框架](./Markdown/element-ui/index.md)
+*   [配置 axios 插件](./Markdown/axios/index.md)
 
 **2. 创建子分支 dev-login，完成登录功能：**
 
 > `git checkout -b dev-login` -> `git branch`
 >
 > `git commit -m '（小功能）创建登录文件夹和路由'`
+>
+> ……
+>
+> 代码合并，提交到主分支
