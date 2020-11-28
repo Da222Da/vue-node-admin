@@ -3,10 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import "@/assets/css/common.css";
-import "@/assets/plugins/element-ui";
+import "@/assets/css/common.css"; // css
+import "@/assets/icons/index.js"; // icons
 
 Vue.config.productionTip = false;
+
 
 new Vue({
     router,

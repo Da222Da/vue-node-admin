@@ -6,7 +6,8 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: "/", component: index },
-    { path: "/login", component: () => import('@/views/login/index.vue')}
+    { path: "/login", component: () => import('@/views/login/index.vue')},
+    { path: "/test",component: () => import('@/views/test-pages/index.vue') }
 ];
 
 const router = new VueRouter({

@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper direction">
         <el-form :model="loginData" label-width="40px" class="demo-ruleForm">
             <el-form-item label="账号" prop="name">
                 <el-input v-model="loginData.name" auto-complete="off"></el-input>
@@ -41,12 +41,15 @@ export default {
     },
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    &.direction {
+        flex-direction: column;
+    }
 }
 .demo-ruleForm {
     width: 400px;

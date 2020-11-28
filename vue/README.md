@@ -10,6 +10,7 @@
 
 *   [按需引入 element-ui 框架](./Markdown/element-ui/index.md)
 *   [配置 axios 插件](./Markdown/axios/index.md)
+*   [配置 icon-svg 字体图标](./Markdown/icons/index.md)
 
 **2. 创建子分支 dev-login，完成登录功能：**
 
