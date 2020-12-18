@@ -5,9 +5,9 @@ import store from "./store";
 
 import "@/assets/css/common.css"; // css
 import "@/assets/icons/index.js"; // icons
+import "@/assets/plugins/element-ui/index.js"; // element-ui
 
 Vue.config.productionTip = false;
-
 
 new Vue({
     router,

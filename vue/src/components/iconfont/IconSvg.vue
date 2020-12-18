@@ -1,7 +1,9 @@
 <template>
-    <svg ref="icon" :class="{ icon: true, 'cursor-pointer': pointer }" aria-hidden="true">
+    <!-- <svg ref="icon" :class="{ icon: true, 'cursor-pointer': pointer }" aria-hidden="true">
         <use :xlink:href="iconName"></use>
-    </svg>
+    </svg> -->
+
+    <div></div>
 </template>
 
 <script>
