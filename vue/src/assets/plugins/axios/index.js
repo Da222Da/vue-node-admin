@@ -2,10 +2,11 @@
  * @flie 配置axios
  */
 import axios from "axios";
-import QS from "qs"; // 序列化数据，例如QS.stringify({name:admin,password}) -->
+import QS from "qs"; // 序列化数据，例如QS.stringify({name:admin,password:123456}) --> name=admin&password=123456
 
+import config from "@/config";
 // 配置请求路径
-axios.defaults.baseURL = "development" === process.env.NODE_ENV ? "http://localhost:3000" : "http://localhost:3000";
+axios.defaults.baseURL = "development" === process.env.NODE_ENV ? config.baseURL.dev : config.baseURL.pro;
 // 请求超时10s
 axios.defaults.timeout = 10000;
 

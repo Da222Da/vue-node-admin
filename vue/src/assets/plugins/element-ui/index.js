@@ -27,6 +27,8 @@ import {
     DropdownMenu,
     Message,
     Option,
+    Dialog,
+    Upload,
 } from "element-ui";
 
 export default (function() {
@@ -53,6 +55,8 @@ export default (function() {
     Vue.use(DropdownMenu);
     Vue.use(TableColumn);
     Vue.use(Option);
+    Vue.use(Dialog);
+    Vue.use(Upload);
 
     // Message组件导出方式不同，需特殊处理
     Vue.component(Message);

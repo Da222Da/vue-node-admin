@@ -2,16 +2,11 @@
     <div>
         <h3>{{ id ? "修改" : "创建" }}--弹框数据</h3>
         <el-form label-width="100px" class="demo-ruleForm">
-            <el-form-item label="标题" :label-width="labelWidth">
-                <el-select v-model="formData.title" placeholder="成功购买新星计划">
-                    <el-option label="成功购买新星计划" value="成功购买新星计划"></el-option>
-                </el-select>
-            </el-form-item>
             <el-form-item label="姓名" :label-width="labelWidth">
                 <el-input v-model="formData.name" placeholder="请填写姓名，例如:“土山焦”" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="金额（USDT）" :label-width="labelWidth">
-                <el-input v-model.number="formData.money" placeholder="请填写数字，例如：“100”" autocomplete="off"></el-input>
+            <el-form-item label="内容" :label-width="labelWidth">
+                <el-input v-model.number="formData.title" placeholder="请填写数字，例如：“100”" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="submitForm()">{{ id ? "修改" : "提交" }}</el-button>
@@ -33,8 +28,7 @@ export default {
             labelWidth: "140px",
             formData: {
                 name: "",
-                title: "成功购买新星计划",
-                money: "",
+                title: "",
             },
         };
     },
@@ -67,7 +61,6 @@ export default {
                 if (200 === res.code) {
                     this.formData.name = res.data.name;
                     this.formData.title = res.data.title;
-                    this.formData.money = res.data.money;
                 }
             });
         },

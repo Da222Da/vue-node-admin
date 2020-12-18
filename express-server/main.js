@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -6,6 +7,9 @@ const app = express();
 // 解析xlsx表格
 // var xlsx = require("node-xlsx").default;
 // const workSheetsFromFile = xlsx.parse("./www/sheet.xlsx");
+
+// 文件托管
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // parse application/x-www-form-urlencoded
 // parse application/json
