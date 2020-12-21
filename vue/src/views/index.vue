@@ -6,6 +6,7 @@
                     <el-submenu index="1">
                         <template slot="title"><i class="el-icon-message"></i>测试案例</template>
                         <el-menu-item index="login-register">弹幕数据管理</el-menu-item>
+                        <el-menu-item index="create-article">文章管理</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-aside>

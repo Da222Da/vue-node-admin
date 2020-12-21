@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>测试</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            input,
+            button {
+                outline: none;
+                border: none;
+                vertical-align: middle; /* 统一基线 */
+            }
+
+            .container {
+                width: 1200px;
+                margin: 0 auto;
+            }
+            .video-wrapper {
+                position: relative;
+            }
+            .video-wrapper video {
+                width: 100%;
+            }
+            .video-wrapper canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .container .tool-box {
+                height: 38px;
+                margin-top: 15px;
+            }
+            .container input,
+            .container button {
+                height: 100%;
+                border-radius: 5px;
+                margin-right: 15px;
+            }
+            .container .danmu-input {
+                width: 300px;
+                border: 1px solid #ccc;
+            }
+            .container .danmu-btn {
+                color: #fff;
+                background-color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="video-wrapper">
+                <canvas id="danmmuCanvas"></canvas>
+                <video src="./static/video.flv" controls></video>
+            </div>
+            <div class="tool-box">
+                <input type="text" class="danmu-input" />
+                <button class="danmu-btn">发送弹幕</button>
+                <input type="color" class="color-input" />
+            </div>
+        </div>
+    </body>
+</html>

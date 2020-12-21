@@ -25,12 +25,12 @@ router.post("/", async (req, res) => {
 
 // 查询全部数据-分页
 router.get("/", async (req, res) => {
-    // try {
-    //     const model = await PopupModel.find().limit(10);
-    //     res.json(ctx.body(model, "更新成功"));
-    // } catch (error) {
-    //     res.json(ctx.body(error, "error", 500));
-    // }
+    try {
+        const model = await PopupModel.find().limit(10);
+        res.json(ctx.body(model, "更新成功"));
+    } catch (error) {
+        res.json(ctx.body(error, "error", 500));
+    }
 });
 
 // 通过_id，查询单挑数据

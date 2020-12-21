@@ -15,6 +15,7 @@ const routes = [
             { path: "/edtor", component: () => import("@/views/functions/login-register/Edtor.vue") },
             // 配置props: true,将params.id注入到Edtor.vue组件，实现解耦。
             { path: "/edtor/:id", component: () => import("@/views/functions/login-register/Edtor.vue"), props: true },
+            { path: "/create-article", component: () => import("@/views/functions/article/Edtor.vue") },
         ],
     },
 ];
