@@ -33,6 +33,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+                z-index: 999;
             }
 
             .container .tool-box {
@@ -58,8 +59,8 @@
     <body>
         <div class="container">
             <div class="video-wrapper">
-                <canvas id="danmmuCanvas"></canvas>
-                <video src="./static/video.flv" controls></video>
+                <canvas id="danmuCanvas"></canvas>
+                <video id="danmuVideo" src="./static/video.mp4" controls></video>
             </div>
             <div class="tool-box">
                 <input type="text" class="danmu-input" />

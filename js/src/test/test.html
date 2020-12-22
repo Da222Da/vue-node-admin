@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>公告</title>
+        <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+        <style type="text/css">
+            * {
+                box-sizing: border-box;
+            }
+            .container {
+                display: flex;
+                align-items: center;
+                height: 38px;
+                padding: 8px 0;
+                background-color: #ffe7d2;
+                border-radius: 5px;
+            }
+            .container .title {
+                padding: 0 20px;
+                border-right: 2px solid #fff;
+            }
+            .container p {
+                padding: 0 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">公告</div>
+            <p id="scrollBox">
+                <span>孕妇、心血管疾病患者、体内安装医院器械者或骨科类疾病患者等不适用按摩功能</span>
+            </p>
+        </div>
+
+        <script>
+            var sb = document.getElementById("scrollBox");
+            // textBox = sb.children[0];
+            // console.log(textBox);
+
+            var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            var timer = setInterval(function () {
+                var random = Math.ceil(Math.random() * 10),
+                    text = "";
+                for (var i = 0; i < data.length; i++) {
+                    if (i === random) {
+                        text = data[random] || "公告数据";
+                        // 清除文字
+                        sb.removeChild(sb.children[0]);
+
+                        // 新增文字
+                        var newEle = document.createElement("span");
+                        newEle.innerHTML = text;
+                        sb.appendChild(newEle);
+                    }
+                }
+            }, 2000);
+        </script>
+    </body>
+</html>
