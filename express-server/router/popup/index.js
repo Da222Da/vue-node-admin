@@ -14,7 +14,7 @@ let multer = require("multer");
 let upload = multer({ dest: path.join(__dirname + "/../../uploads") });
 
 // 创建数据API
-router.post("/", async (req, res) => {
+router.post("/", ctx.tokenVerify, async (req, res) => {
     try {
         const model = await PopupModel.create(req.body);
         res.json(ctx.body(model, "创建成功"));
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
 });
 
 // 查询全部数据API-分页
-router.get("/", async (req, res, next) => {
+router.get("/", ctx.tokenVerify, async (req, res, next) => {
     try {
         let page = req.query.page - 0 || 1,
             size = req.query.size - 0 || 9;
@@ -44,8 +44,34 @@ router.get("/", async (req, res, next) => {
     }
 });
 
+// 官网数据请求API -- 取消验证
+router.get("/web", async (req, res, next) => {
+    try {
+        let page = req.query.page - 0 || 1,
+            size = req.query.size - 0 || 9;
+
+        // 分页查询，默认15条
+        // skip() 跳过多少条
+        let model = await PopupModel.find()
+            .skip((page - 1) * size)
+            .limit(size);
+
+        // 数据处理
+        model = model.map((item) => {
+            return item.name + item.title;
+        });
+
+        // 响应体
+        let resBody = ctx.body(model, "更新成功");
+        resBody.count = await PopupModel.estimatedDocumentCount();
+        res.json(resBody);
+    } catch {
+        res.json(ctx.body(error, "error", 500));
+    }
+});
+
 // 通过_id，查询单挑数据API
-router.get("/:id", async (req, res) => {
+router.get("/:id", ctx.tokenVerify, async (req, res) => {
     try {
         const model = await PopupModel.findById({ _id: req.params.id });
         res.json(ctx.body(model, "查询成功"));
@@ -55,7 +81,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // 通过_id，更新数据API
-router.put("/:id", async (req, res) => {
+router.put("/:id", ctx.tokenVerify, async (req, res) => {
     try {
         const model = await PopupModel.findByIdAndUpdate(req.params.id, req.body);
         res.json(ctx.body(model, "修改成功"));
@@ -65,7 +91,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //  删除数据API
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", ctx.tokenVerify, async (req, res) => {
     try {
         const model = await PopupModel.findByIdAndRemove({ _id: req.params.id });
         res.json(ctx.body(model, "删除成功"));
@@ -75,7 +101,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // 上传并解析xlsx数据API
-router.post("/upload", upload.single("file"), async (req, res) => {
+router.post("/upload", ctx.tokenVerify, upload.single("file"), async (req, res) => {
     new Promise((resolve, reject) => {
         try {
             let file = req.file;

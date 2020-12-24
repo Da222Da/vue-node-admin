@@ -20,13 +20,23 @@ const routes = [
         ],
     },
     // 登录页面
-    { path: "/login", component: () => import("@/views/login-register/index.vue"), name: "LoginRegister" },
+    { path: "/login", component: () => import("@/views/login-register/index.vue"), name: "Login" },
 ];
 
 const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes,
+});
+
+// 全局路由守卫
+router.beforeEach((to, from, next) => {
+    let isLogin = localStorage.getItem("token") ? true : false;
+    if (to.path === "/login") {
+        next();
+    } else {
+        isLogin ? next() : next({ path: "/login" });
+    }
 });
 
 export default router;

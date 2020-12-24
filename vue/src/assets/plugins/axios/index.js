@@ -10,6 +10,18 @@ axios.defaults.baseURL = "development" === process.env.NODE_ENV ? config.baseURL
 // 请求超时10s
 axios.defaults.timeout = 10000;
 
+// 请求拦截器
+axios.interceptors.request.use(
+    function(config) {
+        // "Bearer "， 自定义的验证标识
+        config.headers.authorization = "Bearer " + localStorage.token;
+        return config;
+    },
+    function(err) {
+        return Promise.reject(err);
+    }
+);
+
 // 响应拦截器
 axios.interceptors.response.use(
     (res) => {

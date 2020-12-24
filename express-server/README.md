@@ -54,3 +54,41 @@ console.log(hash); // 2b$10$hdF0pNUScpjRXKoeKccFHO7KTbmM1aKsQR/GDKX6cBOrF5gkMQYU
 let isVaild = bcrypt.compareSync(password, baseData.password)
 console.log(isVaild) // Boolean
 ```
+
+-   jsonwebtoken 使用方式
+
+```
+const jwt = require("jsonwebtoken");
+
+// 生成token令牌
+const token_value = jwt.sign({ name:"小明", password: 123456 }, "privateKey");
+
+// 解析token令牌
+const {name, password} = jwt.verify(token_value, "privateKey");
+```
+
+## ##token 登录流程
+
+1. 登录 API（验证用户名是否存在、密码是否正确，然后，返回 token）
+2. 前端操作
+
+    - 登录时，将 token 值存到 localstorage
+    - 写好路由拦截
+
+    ```
+        // 全局路由守卫
+        router.beforeEach((to, from, next) => {
+            let isLogin = localStorage.getItem("token") ? true : false;
+            if (to.path === "/login") {
+                next();
+            } else {
+                isLogin ? next() : next({ path: "/login" });
+            }
+        });
+    ```
+
+    - 使用 axios 写好请求拦截器，为每一条请求 API，添加请求头 authorization 属性，将登录获取的 token 值，发给后台服务器，后台校验该用户是否有权限。
+
+3. 后台服务器写好校验权限中间件
+
+## ## 优化，自动弹框脚本（script）

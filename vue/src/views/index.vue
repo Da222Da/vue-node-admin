@@ -37,14 +37,7 @@ export default {
     methods: {
         logoutBtn() {
             this.$router.push("/login");
-            console.log();
         },
-        // selectMethod: function(index, path) {
-        //     console.log(index, path);
-        // },
-    },
-    mounted: function() {
-        console.log(this.$route.path);
     },
 };
 </script>

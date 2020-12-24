@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
         if (0 === count) {
             // 加密
             const password = "123456";
-            const hash = bcrypt.hashSync(password, 10);
+            const hash = bcrypt.hashSync(password, 10, { expiresIn: 60 });
             let model = await adminUser.create({ username: "admin", password: hash });
             res.json(ctx.body(model, "创建admin账号，并登录成功", 200));
             return;
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
     if (!isVaild) {
         res.json({ msg: "密码错误，请重新输入", code: 200 });
     } else {
-        let token = jwt.sign({ id: userModel._id, name: userModel.name }, "privateKey");
+        let token = jwt.sign({ id: userModel._id, username: userModel.username }, "privateKey");
         res.json(ctx.body(token, "登录成功", 200));
     }
 });
