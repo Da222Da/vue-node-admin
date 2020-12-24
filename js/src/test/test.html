@@ -3,59 +3,132 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>公告</title>
-        <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-        <style type="text/css">
-            * {
-                box-sizing: border-box;
-            }
-            .container {
+        <title>动画</title>
+        <style>
+            /* .notice-wrapper p {
                 display: flex;
-                align-items: center;
-                height: 38px;
-                padding: 8px 0;
-                background-color: #ffe7d2;
-                border-radius: 5px;
-            }
-            .container .title {
-                padding: 0 20px;
-                border-right: 2px solid #fff;
-            }
-            .container p {
-                padding: 0 20px;
-            }
+                width: 330px;
+                padding: 14px 30px 14px 13px;
+                border-radius: 8px;
+                box-sizing: border-box;
+                border: 1px solid #ebeef5;
+                position: fixed;
+                right: 0;
+                top: 300px;
+                background-color: #fff;
+                box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            } */
+            /* .notice-wrapper p::after {
+                content: "×";
+                position: absolute;
+                top: 0;
+                right: 5px;
+                font-size: 30px;
+                cursor: pointer;
+            } */
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="title">公告</div>
-            <p id="scrollBox">
-                <span>孕妇、心血管疾病患者、体内安装医院器械者或骨科类疾病患者等不适用按摩功能</span>
-            </p>
-        </div>
-
-        <script>
-            var sb = document.getElementById("scrollBox");
-            // textBox = sb.children[0];
-            // console.log(textBox);
-
-            var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-            var timer = setInterval(function () {
-                var random = Math.ceil(Math.random() * 10),
-                    text = "";
-                for (var i = 0; i < data.length; i++) {
-                    if (i === random) {
-                        text = data[random] || "公告数据";
-                        // 清除文字
-                        sb.removeChild(sb.children[0]);
-
-                        // 新增文字
-                        var newEle = document.createElement("span");
-                        newEle.innerHTML = text;
-                        sb.appendChild(newEle);
-                    }
-                }
-            }, 2000);
-        </script>
+        <!-- <div class="notice-wrapper">
+            <p>金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT</p>
+        </div> -->
     </body>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            !(function ($) {
+                // 初始化函数
+                var content = [
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT1",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT2",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT3",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT4",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT5",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT6",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT7",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT8",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT9",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT10",
+                    "金大牙购买新星计划1000USDT金大牙购买新星计划1000USDT11",
+                ];
+                var init = function () {
+                    createElement();
+
+                    // 随机生成公告
+                    var time = 7000;
+                    setInterval(function () {
+                        time =
+                            (Math.random() + 10) * 10000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * Math.random() * 100000 +
+                            (Math.random() > 0.5 ? 1 : 0) * 100000;
+
+                        // 执行公告的显示或隐藏
+                        var sub = Math.ceil(Math.random() * 10) || 1;
+                        contorlNotice(content[sub]);
+                    }, time);
+                };
+                // 生成DOM元素
+                function createElement() {
+                    $("body").append("<div class = 'notice-wrapper'></div>");
+                }
+
+                // 控制公告的创建与删除
+                function contorlNotice(content) {
+                    // 创建公告
+                    $($(".notice-wrapper")[0]).append("<p></p>");
+                    $(".notice-wrapper p")
+                        .text(content)
+                        .css({
+                            display: "flex",
+                            width: "330px",
+                            padding: "14px 30px 14px 13px",
+                            "border-radius": "8px",
+                            "box-sizing": " border-box",
+                            border: "1px solid #ebeef5",
+                            position: "fixed",
+                            right: "0",
+                            top: "300px",
+                            "background-color": "#fff",
+                            "box-shadow": "0 2px 12px 0 rgba(0, 0, 0, 0.1)",
+                            overflow: "hidden",
+                        })
+                        .animate(
+                            {
+                                marginTop: "-=150px",
+                                opacity: "1",
+                            },
+                            2000
+                        );
+
+                    // 删除公告
+                    setTimeout(function () {
+                        // 隐藏动画
+                        $(".notice-wrapper p").animate(
+                            {
+                                marginTop: "-=20px",
+                                opacity: "0",
+                            },
+                            2000
+                        );
+                        //动画结束后删除p
+                        setTimeout(function () {
+                            $(".notice-wrapper p").remove();
+                        }, 2000);
+                    }, 4000);
+                }
+
+                // 执行初始化函数
+                init();
+            })(jQuery);
+        });
+    </script>
 </html>

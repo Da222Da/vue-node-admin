@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>公告栏上下滚动</title>
+    </head>
+    <style type="text/css">
+        body {
+            background: grey;
+        }
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .Roll {
+            padding: 0;
+            text-align: left;
+            text-indent: 10px;
+            cursor: pointer;
+            opacity: 1;
+            height: 6rem;
+            line-height: 3rem;
+            font-size: 17px;
+            background-color: #fff;
+            color: #fe172d;
+        }
+
+        .ul li {
+            background-color: #a6e1ec;
+            border-radius: 20px;
+            height: 2rem;
+            margin: 50px auto;
+            opacity: 0;
+            line-height: 2rem;
+        }
+    </style>
+
+    <body>
+        <div class="Roll" style="overflow: hidden">
+            <ul class="ul">
+                <li>11111刚刚购买了一单</li>
+                <li>22222刚刚购买了一单</li>
+                <li>33333刚刚购买了一单</li>
+                <li>44444刚刚购买了一单</li>
+                <li>55555刚刚购买了一单</li>
+                <li>66666刚刚购买了一单</li>
+            </ul>
+        </div>
+    </body>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        statr = () => {
+            //创造一个循环方法函数
+            let first = $(".ul li:first"), //获取列表第一个li
+                firstLi = first.clone(); //复制第一个li
+            $(".ul li").eq(0).animate(
+                {
+                    //列表第一个添加动画，
+                    marginTop: "-=15px",
+                    opacity: "1",
+                },
+                2000
+            );
+            setTimeout(function () {
+                $(".ul li").eq(0).animate(
+                    {
+                        //列表第二个添加动画，
+                        marginTop: "-=15px",
+                        opacity: "0",
+                    },
+                    2000
+                );
+                setTimeout(function () {
+                    //动画结束后删除第一个li
+                    first.remove();
+                }, 2000);
+                $(".ul").append(firstLi); //li复制到最后面开始新的一轮循环
+            }, 4000);
+        };
+        setInterval("statr()", 7000); //7秒循环一次
+    </script>
+</html>

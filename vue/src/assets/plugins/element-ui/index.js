@@ -29,10 +29,14 @@ import {
     Option,
     Dialog,
     Upload,
+    Pagination,
+    Card,
 } from "element-ui";
 
 export default (function() {
+    Vue.use(Card);
     Vue.use(Button);
+    Vue.use(Pagination);
     Vue.use(Input);
     Vue.use(Select);
     Vue.use(Checkbox);

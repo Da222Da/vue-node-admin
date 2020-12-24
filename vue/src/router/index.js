@@ -8,16 +8,19 @@ const routes = [
     {
         path: "/",
         component: index,
-        redirect: { path: "/login-register" },
+        redirect: { path: "/popup" },
         children: [
-            // { path: "/express-server", component: () => import("@/views/technival-support/ExpressServer.vue") },
-            { path: "/login-register", component: () => import("@/views/functions/login-register/index.vue") },
-            { path: "/edtor", component: () => import("@/views/functions/login-register/Edtor.vue") },
+            { path: "/popup", component: () => import("@/views/popup/index.vue") },
+            { path: "/popup-edtor", component: () => import("@/views/popup/Edtor.vue") },
             // 配置props: true,将params.id注入到Edtor.vue组件，实现解耦。
-            { path: "/edtor/:id", component: () => import("@/views/functions/login-register/Edtor.vue"), props: true },
-            { path: "/create-article", component: () => import("@/views/functions/article/Edtor.vue") },
+            { path: "/popup-edtor/:id", component: () => import("@/views/popup/Edtor.vue"), props: true },
+
+            // 文章管理
+            // { path: "/create-article", component: () => import("@/views/functions/article/Edtor.vue") },
         ],
     },
+    // 登录页面
+    { path: "/login", component: () => import("@/views/login-register/index.vue"), name: "LoginRegister" },
 ];
 
 const router = new VueRouter({

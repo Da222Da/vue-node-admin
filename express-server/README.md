@@ -3,7 +3,9 @@
 -   使用 mongoose，配置、操作 MongoDB 数据库
 -   统一处理接口`/extend/_return.js`
 
-*   multer 插件，处理单文件、多文件上传
+*   multer 插件，处理单文件、多文件上传，显示上传文件进度条
+*   如何实现分页功能流程
+*   如何实现登录注册
 
 # MongoDB 文档
 
@@ -26,3 +28,29 @@
 1. 查询
 
 -   `db.collection-name.find()`,查询该集合的所有数据
+
+## #mongoodb 文档记录
+
+-   **API**
+
+1.  `collection-name.estimatedDocumentCount()`，查询文档对象的 length
+
+## #插件
+
+-   bcrypt 使用方式
+
+```
+const bcrypt = require("bcrypt");
+// 加密
+// bcrypt.hashSync(myPlaintextPassword, saltRounds);，自动生成salt，参与加密的字符
+//saltRounds || 10，生成salt的迭代次数
+
+const hash = bcrypt.hashSync("123456", 10);
+console.log(hash); // 2b$10$hdF0pNUScpjRXKoeKccFHO7KTbmM1aKsQR/GDKX6cBOrF5gkMQYUu
+
+
+// 解密
+// bcrypt.compareSync(myPlaintextPassword, "password from the DB");，自动生成salt，参与加密的字符
+let isVaild = bcrypt.compareSync(password, baseData.password)
+console.log(isVaild) // Boolean
+```
