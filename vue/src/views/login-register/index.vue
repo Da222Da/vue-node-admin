@@ -55,6 +55,8 @@ export default {
                             this.$message.success(res.msg);
                             localStorage.setItem("token", res.data);
                             this.$router.push("/");
+                        } else {
+                            this.$message.error(res.msg);
                         }
                     });
                 } else {
