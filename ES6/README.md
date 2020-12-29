@@ -29,3 +29,7 @@
     plugins:[]
 }
 ```
+
+3. Babel 常用依赖包
+    - `npm i babel-cli -D` 命令行转码 babel-cli，`单文件转码：babel index.js -o dist.js`、`文件夹转码：babel src -d dist`
+    - `npm i babel-polyfill -D` Babel 默认只转换新的 JavaScript 句法（ yntax ），而不转换新的 API ，如 Promise 等全局对象，以及一些定义在全局对象上的方法（如 Object assign ）都不会转码。
