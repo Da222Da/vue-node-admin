@@ -1,23 +1,8 @@
-# 后台管理系统项目文档
+# ## 登录注册功能
 
-技术栈： `vue2.0` `express`
+## # 流程
+1. 登录获取token信息，并将其存到浏览器和vuex当中。
 
-# ##项目流程：
-
-**1. 项目准备工作：**
-
--   vue-cli 初始化项目
-
-*   [按需引入 element-ui 框架](./Markdown/element-ui/index.md)
-*   [配置 axios 插件](./Markdown/axios/index.md)
-*   [配置 icon-svg 字体图标](./Markdown/icons/index.md)
-
-**2. 创建子分支 dev-login，完成登录功能：**
-
-> `git checkout -b dev-login` -> `git branch`
->
-> `git commit -m '（小功能）创建登录文件夹和路由'`
->
-> ……
->
-> 代码合并，提交到主分支
+## # 待办业务
+* 统一的异常处理提示语： 404 、304、500等等
+* 登录时长控制啊 

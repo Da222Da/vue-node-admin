@@ -23,7 +23,7 @@
                             <div @click="logoutBtn"><el-dropdown-item>退出登录</el-dropdown-item></div>
                         </el-dropdown-menu>
                     </el-dropdown>
-                    <span>后台管理</span>
+                    <span>{{ $store.state.name }}</span>
                 </el-header>
 
                 <el-main>
@@ -40,7 +40,9 @@
 export default {
     methods: {
         logoutBtn() {
-            this.$router.push("/login");
+            this.$store.dispatch("logout").then(() => {
+                this.$router.push("/login");
+            }).catch(err => this.$message.error("退出失败"))
         },
     },
 };

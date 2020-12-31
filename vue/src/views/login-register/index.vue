@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-import { login } from "@/api/login/index.js";
+
 export default {
     data() {
         var checkusername = (rule, value, callback) => {
@@ -50,15 +50,12 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    login(this.ruleForm).then((res) => {
-                        if (200 === res.code) {
-                            this.$message.success(res.msg);
-                            localStorage.setItem("token", res.data);
-                            this.$router.push("/");
-                        } else {
-                            this.$message.error(res.msg);
-                        }
-                    });
+                    this.$store.dispatch('login', this.ruleForm).then((res) => {
+                            this.$router.push("/popup");
+                            this.$message.success(res.msg)
+                    }).catch(err => {
+                        console.log(err);
+                    })
                 } else {
                     return false;
                 }

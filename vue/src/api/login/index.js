@@ -5,3 +5,5 @@
 import { get, post } from "@/assets/plugins/axios/index.js";
 
 export const login = (data) => post("/login", data);
+
+export const getInfo = (token) => get(`/login/${token}`)

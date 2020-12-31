@@ -4,6 +4,8 @@
 import axios from "axios";
 import QS from "qs"; // 序列化数据，例如QS.stringify({name:admin,password:123456}) --> name=admin&password=123456
 
+import { Message } from 'element-ui';
+
 import config from "@/config";
 // 配置请求路径
 axios.defaults.baseURL = "development" === process.env.NODE_ENV ? config.baseURL.dev : config.baseURL.pro;
@@ -14,7 +16,7 @@ axios.defaults.timeout = 10000;
 axios.interceptors.request.use(
     function(config) {
         // "Bearer "， 自定义的验证标识
-        config.headers.authorization = "Bearer " + localStorage.token;
+        config.headers.authorization = "Bearer " + localStorage.getItem("Token");
         return config;
     },
     function(err) {
@@ -22,11 +24,19 @@ axios.interceptors.request.use(
     }
 );
 
-// 响应拦截器
+// 响应拦截器 -- 对响应数据做些什么
 axios.interceptors.response.use(
     (res) => {
-        // 对响应数据做些什么
-        return res.data;
+        const response = res.data;
+        if(200 !== response.code) {
+            Message({
+                message: response.msg || 'Error',
+                type: "error",
+                duration: 5 * 1000
+            });
+        } else {
+            return response;
+        }
     },
     (err) => {
         // 对响应错误做些什么

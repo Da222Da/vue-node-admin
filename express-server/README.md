@@ -34,6 +34,7 @@
 -   **API**
 
 1.  `collection-name.estimatedDocumentCount()`，查询文档对象的 length
+2. `adminUser.find({_id: id}, {password:0})`,查询时，忽略password
 
 ## #插件
 

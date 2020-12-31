@@ -16,7 +16,7 @@ module.exports = async function (req, res, next) {
     } else {
         // 解析token信息
         let { id, username } = jwt.verify(token_value, "privateKey");
-        let model = await adminUser.findById({ _id: id });
+        let model = await adminUser.find({ _id: id });
 
         if (id === model._id && username === model.username) {
             res.status(401).send({ msg: "该用户不存在" });
