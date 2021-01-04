@@ -113,6 +113,7 @@ console.log(window.b); // undefined
 
 
 ## #解构赋值 提取数据结构里面的值，然后赋值给新的变量
+
 * 基本用法，`常常用于数组、对象、函数，至于数字、字符串、Boolean还需要包装类，一点都不实用！`：
 ```
 // 数组
@@ -162,3 +163,17 @@ function add() {
 }
 let [a,b,c] = add();
 ```
+
+## #ES6字符串拓展
+1. 新增模板字符串
+2. 新增遍历器：`for……of`获取值、`for……in`获取索引
+3. 字符串新增方法：
+    * 在charCodeAt()的基础之上，新增了codePointAt()、String.fromCodePoint()
+    * 在charAt()的基础之上，新增了at()
+    * 在indexOf()的基础之上，新增includes()、startsWith()、endsWith()
+    * 新增重复方法repeat()、补全方法padStart()、padEnd()
+    ```
+        # 场景：提示字符串格式
+        
+        console.log('01'.padStart(10,'YYYY-MM-DD'));
+    ```
