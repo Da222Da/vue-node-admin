@@ -16,7 +16,8 @@ axios.defaults.timeout = 10000;
 axios.interceptors.request.use(
     function(config) {
         // "Bearer "， 自定义的验证标识
-        config.headers.authorization = "Bearer " + localStorage.getItem("Token");
+        let token = localStorage.getItem("Token")
+        if(token) config.headers.authorization = "Bearer " + token;
         return config;
     },
     function(err) {

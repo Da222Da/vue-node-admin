@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import { login, getInfo } from "@/api/login/index.js";
+import { login, getInfo, getRouterInfo } from "@/api/login/index.js";
+import { formatRouterTree } from "@/utils/index.js"
 
 Vue.use(Vuex);
 
@@ -9,6 +10,10 @@ const state = {
     token: localStorage.getItem("Token") || "",
     name: "",
     avatar: "",
+
+    uid:3, // user id
+    isHasAuth: false, // 是否存在权限
+    authRouter:[], // 存储树形结构的路由表
 };
 const mutations = {
     SET_TOKEN: (state, token) => {
@@ -16,6 +21,15 @@ const mutations = {
     },
     SET_NAME: (state, name) => {
         state.name = name
+    },
+    SET_UID: (state, uid) => {
+        state.uid = uid
+    },
+    SET_AUTHROUTER: (state, routers) => {
+        state.authRouter = routers;
+    },
+    SET_ISHASAUTH: (state, auth) => {
+        state.isHasAuth = auth;
     }
 };
 const actions = {
@@ -50,6 +64,7 @@ const actions = {
             })
         })
     },
+    // 退出登录
     logout({commit}) {
         return new  Promise((resolve,reject) => {
             commit("SET_NAME", "");
@@ -60,6 +75,17 @@ const actions = {
         }).catch(err => {
             reject(err)
         })
+    },
+    // 获取用户权限列表
+    async getRouterAuth({state,commit}) {
+        let data = await getRouterInfo(state.uid);
+        let tree = formatRouterTree(data.data);
+        
+        // 开启权限
+        commit("SET_ISHASAUTH", true);
+
+        // 赋值树形结构--路由数据
+        commit("SET_AUTHROUTER", tree);
     }
 };
 

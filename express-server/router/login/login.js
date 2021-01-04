@@ -10,6 +10,10 @@ const { ctx } = require("../../extend/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
+const user = require("../../datas/user")
+const auth = require("../../datas/router")
+
 // 用户token登录
 router.post("/", async (req, res) => {
     let { username, password } = req.body;
@@ -39,7 +43,6 @@ router.post("/", async (req, res) => {
         res.json(ctx.body({token}, "登录成功", 200));
     }
 });
-
 
 // 通过解析用户的token信息获取id，再通过id查询用信息
 router.get("/:token",async (req,res) => {

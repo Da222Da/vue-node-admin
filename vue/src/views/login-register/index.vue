@@ -20,7 +20,9 @@
 </template>
 <script>
 
+// import { getRouterInfo } from "@/api/login/index.js"
 export default {
+    
     data() {
         var checkusername = (rule, value, callback) => {
             if (!value) {
@@ -46,6 +48,12 @@ export default {
             },
         };
     },
+
+    // mounted: function() {
+    //     getRouterInfo(2).then(res => {
+    //         console.log(res);
+    //     })
+    // },
     methods: {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {

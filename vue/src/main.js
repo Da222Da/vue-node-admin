@@ -13,6 +13,7 @@ Vue.prototype.$baseurl = "development" === process.env.NODE_ENV ? config.baseURL
 
 Vue.config.productionTip = false;
 
+store.dispatch("getRouterAuth")
 new Vue({
     router,
     store,
