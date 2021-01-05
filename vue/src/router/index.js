@@ -1,9 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import index from "@/views/index.vue";
-import store from "@/store/index.js"
-
-import {Message} from "element-ui"
 
 Vue.use(VueRouter);
 
@@ -34,23 +31,6 @@ const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
     routes,
-});
-
-// 全局路由守卫
-router.beforeEach((to, from, next) => {
-        // 是否已经登录----拿到了token信息
-        if(store.state.name.length === 0) {
-            // 前往登录页面的时候，不获取用户信息
-            if(to.path === "/login"){
-                next();
-            }else{
-                store.dispatch("get_user_info").then(() => {
-                    next();
-                })
-            } 
-        }else {
-            next();
-        }
 });
 
 export default router;

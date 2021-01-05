@@ -7,6 +7,7 @@ import { formatRouterTree } from "@/utils/index.js"
 Vue.use(Vuex);
 
 const state = {
+    isToken: false, // 是否存在token登录信息
     token: localStorage.getItem("Token") || "",
     name: "",
     avatar: "",
@@ -16,6 +17,9 @@ const state = {
     authRouter:[], // 存储树形结构的路由表
 };
 const mutations = {
+    SET_ISTOKEN:(state, bool) => {
+        state.isToken = bool;
+    },
     SET_TOKEN: (state, token) => {
         state.token = token
     },
@@ -28,8 +32,8 @@ const mutations = {
     SET_AUTHROUTER: (state, routers) => {
         state.authRouter = routers;
     },
-    SET_ISHASAUTH: (state, auth) => {
-        state.isHasAuth = auth;
+    SET_ISHASAUTH: (state, bool) => {
+        state.isHasAuth = bool;
     }
 };
 const actions = {
@@ -76,6 +80,7 @@ const actions = {
             reject(err)
         })
     },
+    
     // 获取用户权限列表
     async getRouterAuth({state,commit}) {
         let data = await getRouterInfo(state.uid);

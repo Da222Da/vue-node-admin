@@ -33,8 +33,26 @@ function formatRouterTree(data) {
     return parents;
 }
 
+// 生成vue-router路由表
+function generateRouter(userRouter) {
+    let newRouters = userRouter.map(r => {
+        let routers = {
+            path: r.path,
+            name: r.name,
+            component: () => import(`@/views/${r.name}`)
+        }
+        if(r.children) {
+            routers.children = generateRouter(r.children);
+        }
+        return routers;
+    })
+
+    return newRouters;
+}
+
 
 
 export {
-    formatRouterTree
+    formatRouterTree,
+    generateRouter
 }
