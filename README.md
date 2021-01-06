@@ -2,4 +2,6 @@
 
 搭建后台管理系统：`vue2.0`、`node`
 
-`svn://119.29.179.170:18526/vbo092bnf92na.z9ow21bvo,2w.imee/guanwang/cpt`
+https://www.netsarang.com/en/downloading/?token=aVpJbWtfZkJ4TERRNklzcVNjUHkxQUBqd2t6MXZnLXczbTUxdUlXVEhfcjVB
+
+https://www.netsarang.com/en/downloading/?token=R3hMSWc2b2RYRnNkZUlab0x2ZG14QUBqd2t6MXZnLXczbTUxdUlXVEhfcjVB
